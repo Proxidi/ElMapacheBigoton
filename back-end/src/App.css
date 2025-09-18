@@ -1,0 +1,160 @@
+:root {
+  --azul-primario: #4169e8;    /* Azul oscuro profesional */
+  --azul-secundario: #3B82F6;  /* Azul brillante para acentos */
+  --azul-suave: #EFF6FF;       /* Azul muy claro para fondos */
+  --blanco: #FFFFFF;
+  --gris-oscuro: #374151;
+  --gris-claro: #F3F4F6;
+  --hover-color: #3ac160;      /* Azul para efectos hover */
+  --borde-color: #D1D5DB;
+}
+
+body {
+  background-color: var(--gris-claro);
+  color: var(--gris-oscuro);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Menú (HeadComponent y PrimeReact Menubar) */
+.p-menubar {
+  background-color: var(--azul-primario) !important;
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+  padding: 0.5rem 1rem;
+}
+
+.p-menubar .p-menuitem-link {
+  color: var(--blanco) !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.p-menubar .p-menuitem-link .p-menuitem-icon {
+  color: var(--blanco) !important;
+  margin-right: 0.5rem;
+}
+
+/* Efecto hover, focus y active */
+.p-menubar .p-menuitem-link:hover,
+.p-menubar .p-menuitem-link:focus,
+.p-menubar .p-menuitem-link:active {
+  background-color: var(--hover-color) !important;
+  color: var(--blanco) !important;
+}
+
+/* Botones */
+.p-button {
+  background-color: var(--azul-primario);
+  border: 1px solid var(--azul-primario);
+  color: var(--blanco);
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  border-radius: 6px;
+}
+.p-button:hover {
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+}
+
+/* DataTable */
+.p-datatable {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: var(--azul-primario);
+  color: var(--blanco);
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  border-color: var(--borde-color);
+  padding: 0.75rem 1rem;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  transition: background-color 0.2s;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background-color: var(--azul-suave);
+}
+
+/* Diálogos */
+.p-dialog .p-dialog-header {
+  background-color: var(--azul-primario);
+  color: var(--blanco);
+  padding: 1.25rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.p-dialog .p-dialog-content {
+  padding: 1.5rem;
+}
+
+.p-dialog .p-dialog-footer {
+  background-color: var(--blanco);
+  border-top: 1px solid var(--borde-color);
+  padding: 1rem 1.5rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Toolbar */
+.p-toolbar {
+  background-color: var(--azul-primario);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Toast */
+.p-toast {
+  font-weight: 500;
+}
+
+.p-toast .p-toast-message {
+  border-radius: 6px;
+}
+
+/* Cards */
+.Card {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background-color: var(--blanco);
+  border: 1px solid var(--borde-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mejoras adicionales para inputs y otros elementos */
+.p-inputtext {
+  border-radius: 6px;
+  border: 1px solid var(--borde-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.p-inputtext:enabled:hover {
+  border-color: var(--azul-secundario);
+}
+
+.p-inputtext:enabled:focus {
+  border-color: var(--azul-secundario);
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+  outline: 0 none;
+}
