@@ -12,7 +12,7 @@ import {classNames} from "primereact/utils";
 import {Dialog} from "primereact/dialog";
 import {Dropdown, DropdownChangeEvent} from "primereact/dropdown";
 import RolService from "../../services/RolService.tsx";
-import AreaService from "../../services/AreaService.tsx";
+import AreaService from "../../services/BarberoService.tsx";
 
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";

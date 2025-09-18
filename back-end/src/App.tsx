@@ -7,7 +7,7 @@ import ListaPlanTrabajoComponent from "./components/plan-trabajo/ListaPlanTrabaj
 
 /* CRUDs */
 import CRUDRolComponent from "./components/roles/CRUDRolComponent.tsx";
-import CRUDAreaComponent from "./components/areas/CRUDAreaComponent.tsx";
+import CRUDAreaComponent from "./components/barbero/CRUDBarberoComponent.tsx";
 import CRUDUnidadComponent from "./components/unidades/CRUDUnidadComponent.tsx";
 import CRUDUsuarioComponent from "./components/usuarios/CRUDUsuarioComponent.tsx";
 import CRUDObjetivoComponent from "./components/objetivos/CRUDObjetivoComponent";
