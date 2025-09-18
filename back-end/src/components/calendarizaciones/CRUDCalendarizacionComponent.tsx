@@ -13,7 +13,7 @@ import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import { classNames } from "primereact/utils";
 import CalendarizacionService from "../../services/CalendarizacionService";
 import MesService from "../../services/MesService";
-import ActividadService from "../../services/ActividadService";
+import ActividadService from "../../services/ServicioService";
 
 interface Mes {
     idMes: number;

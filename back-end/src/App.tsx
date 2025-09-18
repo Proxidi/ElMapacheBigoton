@@ -14,7 +14,7 @@ import CRUDObjetivoComponent from "./components/objetivos/CRUDObjetivoComponent"
 import CRUDComponenteComponent from "./components/componentes/CRUDComponenteComponent.tsx";
 import CRUDUnidadMedidaComponent from "./components/unidades_medida/CRUDUnidadMedidaComponent.tsx";
 import CRUDProgramaComponent from "./components/programas/CRUDProgramaComponent.tsx";
-import CRUDActividadComponent from "./components/actividades/CRUDActividadComponent.tsx";
+import CRUDActividadComponent from "./components/Servicio/CRUDActividadComponent.tsx";
 import CRUDCalendarizacionComponent from "./components/calendarizaciones/CRUDCalendarizacionComponent.tsx";
 
 function App() {
