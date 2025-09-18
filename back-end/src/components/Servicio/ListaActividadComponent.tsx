@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import ActividadService from "../../services/ActividadService.tsx";
+import ActividadService from "../../services/ServicioService.tsx";
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
 
