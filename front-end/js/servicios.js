@@ -1,4 +1,3 @@
-// js/servicios.js
 $(function () {
   const pageSize = 10;
   let currentPage = 1;
@@ -7,11 +6,9 @@ $(function () {
   const paginationId = "paginationServicios";
   const placeholderId = "placeholder-servicio";
 
-  // modal bootstrap
   const modalEl = document.getElementById("modalServicio");
   const modal = new bootstrap.Modal(modalEl);
 
-  // Helpers
   function escapeHtml(str) {
     return String(str ?? "").replace(/[&<>"'`=\/]/g, function (s) {
       return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '/': '&#x2F;', '`': '&#x60;', '=': '&#x3D;' })[s];
@@ -23,19 +20,17 @@ $(function () {
     return isNaN(v) ? "—" : v.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
   }
 
-  // Cargar página paginada de servicios
   async function cargarServicios(page = 1) {
     const tbody = document.getElementById(tbodyId);
     const placeholder = document.getElementById(placeholderId);
     try {
-      const res = await fetch(`/api/servicios?page=${page - 1}&size=${pageSize}`);
+      const res = await fetch(`http://localhost:8080/api/servicios?page=${page - 1}&size=${pageSize}`);
       if (!res.ok) throw new Error("Error al obtener servicios");
       const data = await res.json();
       const items = data.content ?? data;
       const totalPages = data.totalPages ?? Math.ceil((data.length || items.length) / pageSize);
 
       if (!items || items.length === 0) {
-        // mantener placeholder row y cambiar texto
         tbody.innerHTML = "";
         if (placeholder) {
           tbody.appendChild(placeholder);
@@ -47,7 +42,6 @@ $(function () {
         return;
       }
 
-      // render filas
       tbody.innerHTML = "";
       items.forEach(s => {
         const tr = document.createElement("tr");
@@ -67,7 +61,6 @@ $(function () {
       attachRowListeners();
     } catch (err) {
       console.error(err);
-      // show error on placeholder
       const tbody = document.getElementById(tbodyId);
       tbody.innerHTML = "";
       const ph = document.createElement("tr");
@@ -76,7 +69,6 @@ $(function () {
     }
   }
 
-  // Paginación
   function renderPagination(totalPages, activePage) {
     const pagination = document.getElementById(paginationId);
     pagination.innerHTML = "";
@@ -108,7 +100,6 @@ $(function () {
     pagination.appendChild(nextLi);
   }
 
-  // Listeners para editar / borrar en filas
   function attachRowListeners() {
     document.querySelectorAll(".btn-delete").forEach(btn => {
       btn.removeEventListener && btn.removeEventListener("click", onDeleteClick); // safe detach if any
@@ -124,7 +115,7 @@ $(function () {
     const id = e.currentTarget.getAttribute("data-id");
     if (!confirm("Eliminar servicio?")) return;
     try {
-      const res = await fetch(`/api/servicios/${id}`, { method: "DELETE" });
+      const res = await fetch(`http://localhost:8080/api/servicios/${id}`, { method: "DELETE" });
       if (res.ok) cargarServicios(currentPage);
       else {
         const t = await res.text();
@@ -139,10 +130,9 @@ $(function () {
   async function onEditClick(e) {
     const id = e.currentTarget.getAttribute("data-id");
     try {
-      const res = await fetch(`/api/servicios/${id}`);
+      const res = await fetch(`http://localhost:8080/api/servicios/${id}`);
       if (!res.ok) throw new Error("No encontrado");
       const s = await res.json();
-      // llenar modal con datos
       document.getElementById("servicioId").value = s.id ?? "";
       document.getElementById("servicioNombre").value = s.nombre ?? s.name ?? "";
       document.getElementById("servicioPrecio").value = s.precio ?? s.price ?? "";
@@ -153,16 +143,12 @@ $(function () {
       alert("No se pudo cargar el servicio para editar");
     }
   }
-
-  // Nuevo servicio (abrir modal limpio)
   document.getElementById("btnNuevoServicio").addEventListener("click", () => {
     document.getElementById("formServicio").reset();
     document.getElementById("servicioId").value = "";
     document.getElementById("modalServicioTitle").textContent = "Nuevo servicio";
     modal.show();
   });
-
-  // Guardar servicio (POST = crear, PUT = editar)
   document.getElementById("formServicio").addEventListener("submit", async (e) => {
     e.preventDefault();
     const id = document.getElementById("servicioId").value;
@@ -171,7 +157,7 @@ $(function () {
       precio: parseFloat(document.getElementById("servicioPrecio").value)
     };
     try {
-      const url = id ? `/api/servicios/${id}` : `/api/servicios`;
+      const url = id ? `http://localhost:8080/api/servicios/${id}` : `http://localhost:8080/api/servicios`;
       const method = id ? "PUT" : "POST";
       const res = await fetch(url, {
         method,
@@ -191,7 +177,5 @@ $(function () {
       alert("Error al guardar servicio");
     }
   });
-
-  // Inicial
   cargarServicios(1);
 });
