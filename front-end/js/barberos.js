@@ -133,12 +133,11 @@ $(function () {
     document.querySelectorAll(".btn-ver-barbero").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const id = e.currentTarget.getAttribute("data-id");
-        window.location.href = `/barberos/${id}`; // o modal read-only si quieres
+        window.location.href = `/barberos/${id}`; 
       });
     });
   }
 
-  // Form submit create/update
   document.getElementById("formBarbero").addEventListener("submit", async (e) => {
     e.preventDefault();
     const id = document.getElementById("barberoId").value || null;
@@ -176,6 +175,5 @@ $(function () {
     modal.show();
   });
 
-  // Inicial
   cargarBarberos(1);
 });
