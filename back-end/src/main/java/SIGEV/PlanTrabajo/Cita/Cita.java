@@ -15,12 +15,12 @@ public class Cita {
 
     private LocalDate fecha;
 
-    // formato "HH:mm"
+   
     private String hora;
 
     private String cliente;
 
-    private String status; // "pendiente", "en progreso", "terminado", etc.
+    private String status; 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "barbero_id")
