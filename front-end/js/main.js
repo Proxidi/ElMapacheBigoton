@@ -164,7 +164,6 @@ $(function () {
     window.location.href = `/citas/${id}`;
   }
 
-  // === cargar barberos y servicios para selects (compatibles Page<T> o array) ===
   async function cargarBarberos() {
     try {
       const res = await fetch("http://localhost:8080/api/barberos");
@@ -205,7 +204,6 @@ $(function () {
     }
   }
 
-  // === Submit handler para crear/editar cita (con logs de debugging) ===
   const formNuevoEl = document.getElementById("formNuevo");
   if (formNuevoEl) {
     formNuevoEl.addEventListener("submit", async (e) => {
